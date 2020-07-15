@@ -57,29 +57,31 @@ function airtab2php_list($apikey, $base, $table, $view, $fields, $where, $sort, 
 //    for Airtables API
 // _____________________________________________
 function airtab2php_create($apikey, $base, $table, $fields, $values) {
-  $fields = explode(";", $fields);
-  $values = explode(";", $values);
-  $data   = array_combine($fields, $values);
-  $data   = json_encode(array('fields' => $data), true);
+  if (!empty($apikey) && !empty($base) && !empty($table) && !empty($fields) && !empty($values)) {
+    $fields = explode(";", $fields);
+    $values = explode(";", $values);
+    $data   = array_combine($fields, $values);
+    $data   = json_encode(array('fields' => $data), true);
 
-  $cURL = curl_init();
-  curl_setopt($cURL, CURLOPT_URL, "https://api.airtable.com/v0/".$base."/".$table);
-  $headers = array(
-      'Content-Type: application/json',
-      'Authorization: Bearer '.$apikey
-  );
-  curl_setopt($cURL, CURLOPT_HTTPHEADER, $headers);
-  curl_setopt($cURL, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($cURL, CURLOPT_POST, true);
-  curl_setopt($cURL, CURLOPT_POSTFIELDS, $data);
+    $cURL = curl_init();
+    curl_setopt($cURL, CURLOPT_URL, "https://api.airtable.com/v0/".$base."/".$table);
+    $headers = array(
+        'Content-Type: application/json',
+        'Authorization: Bearer '.$apikey
+    );
+    curl_setopt($cURL, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($cURL, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($cURL, CURLOPT_POST, true);
+    curl_setopt($cURL, CURLOPT_POSTFIELDS, $data);
 
-  $response = curl_exec($cURL);
-  $httpCode = curl_getinfo($cURL, CURLINFO_HTTP_CODE);
-  $result = json_decode($response, true);
-  curl_close($cURL);
+    $response = curl_exec($cURL);
+    $httpCode = curl_getinfo($cURL, CURLINFO_HTTP_CODE);
+    $result = json_decode($response, true);
+    curl_close($cURL);
 
-  if ($httpCode == 200 && !empty($result['id'])) {
-    return TRUE;
+    if ($httpCode == 200 && !empty($result['id'])) {
+      return TRUE;
+    }
   }
 }
 
@@ -89,30 +91,32 @@ function airtab2php_create($apikey, $base, $table, $fields, $values) {
 //    for Airtables API
 // _____________________________________________
 function airtab2php_update($apikey, $base, $table, $id, $fields, $values) {
-  $fields = explode(";", $fields);
-  $values = explode(";", $values);
-  $data   = array_combine($fields, $values);
-  $data   = json_encode(array('fields' => $data), true);
+  if (!empty($apikey) && !empty($base) && !empty($table) && !empty($id) && !empty($fields) && !empty($values)) {
+    $fields = explode(";", $fields);
+    $values = explode(";", $values);
+    $data   = array_combine($fields, $values);
+    $data   = json_encode(array('fields' => $data), true);
 
-  $cURL = curl_init();
-  curl_setopt($cURL, CURLOPT_URL, "https://api.airtable.com/v0/".$base."/".$table."/".$id);
-  $headers = array(
-      'Content-Type: application/json',
-      'Authorization: Bearer '.$apikey
-  );
-  curl_setopt($cURL, CURLOPT_HTTPHEADER, $headers);
-  curl_setopt($cURL, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($cURL, CURLOPT_CUSTOMREQUEST, 'PATCH');
-  curl_setopt($cURL, CURLOPT_POST, true);
-  curl_setopt($cURL, CURLOPT_POSTFIELDS, $data);
+    $cURL = curl_init();
+    curl_setopt($cURL, CURLOPT_URL, "https://api.airtable.com/v0/".$base."/".$table."/".$id);
+    $headers = array(
+        'Content-Type: application/json',
+        'Authorization: Bearer '.$apikey
+    );
+    curl_setopt($cURL, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($cURL, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($cURL, CURLOPT_CUSTOMREQUEST, 'PATCH');
+    curl_setopt($cURL, CURLOPT_POST, true);
+    curl_setopt($cURL, CURLOPT_POSTFIELDS, $data);
 
-  $response = curl_exec($cURL);
-  $httpCode = curl_getinfo($cURL, CURLINFO_HTTP_CODE);
-  $result = json_decode($response, true);
-  curl_close($cURL);
+    $response = curl_exec($cURL);
+    $httpCode = curl_getinfo($cURL, CURLINFO_HTTP_CODE);
+    $result = json_decode($response, true);
+    curl_close($cURL);
 
-  if ($httpCode == 200 && !empty($result['id'])) {
-    return TRUE;
+    if ($httpCode == 200 && !empty($result['id'])) {
+      return TRUE;
+    }
   }
 }
 
@@ -122,24 +126,26 @@ function airtab2php_update($apikey, $base, $table, $id, $fields, $values) {
 //    for Airtables API
 // _____________________________________________
 function airtab2php_delete($apikey, $base, $table, $id) {
-  $cURL = curl_init();
-  curl_setopt($cURL, CURLOPT_URL, "https://api.airtable.com/v0/".$base."/".$table."/".$id);
-  $headers = array(
-      'Content-Type: application/json',
-      'Authorization: Bearer '.$apikey
-  );
-  curl_setopt($cURL, CURLOPT_HTTPHEADER, $headers);
-  curl_setopt($cURL, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($cURL, CURLOPT_CUSTOMREQUEST, 'DELETE');
-  curl_setopt($cURL, CURLOPT_POST, true);
+  if (!empty($apikey) && !empty($base) && !empty($table) && !empty($id)) {
+    $cURL = curl_init();
+    curl_setopt($cURL, CURLOPT_URL, "https://api.airtable.com/v0/".$base."/".$table."/".$id);
+    $headers = array(
+        'Content-Type: application/json',
+        'Authorization: Bearer '.$apikey
+    );
+    curl_setopt($cURL, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($cURL, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($cURL, CURLOPT_CUSTOMREQUEST, 'DELETE');
+    curl_setopt($cURL, CURLOPT_POST, true);
 
-  $response = curl_exec($cURL);
-  $httpCode = curl_getinfo($cURL, CURLINFO_HTTP_CODE);
-  $result = json_decode($response, true);
-  curl_close($cURL);
+    $response = curl_exec($cURL);
+    $httpCode = curl_getinfo($cURL, CURLINFO_HTTP_CODE);
+    $result = json_decode($response, true);
+    curl_close($cURL);
 
-  if ($httpCode == 200 && $result['deleted']) {
-    return TRUE;
+    if ($httpCode == 200 && $result['deleted']) {
+      return TRUE;
+    }
   }
 }
 ?>
