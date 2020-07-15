@@ -12,19 +12,19 @@ require_once 'airtab2php.php';
 
 ## Usage
 
-API-key, base ID and table name are required variables for all functions.
+API-key, base ID and table name are required arguments for all functions.
 
-### Required variables 
+### Required arguments 
 
-| Variable | Description                     | Example                   |
+| Argument | Description                     | Example                   |
 | -------- | ------------------------------- | ------------------------- |
-| [APIKEY] | Generated API-key from Airtable | ex. *'keysccH0c9F1ZtwXe'* |
-| [BASE]   | Unique ID of base in Airtable   | ex. *'appxxxp0BT5w4x1ac'* |
-| [TABLE]  | Table name in Airtable          | ex. *'phonebook'*         |
+| [APIKEY] | Generated API-key from Airtable | *'keysccH0c9F1ZtwXe'* |
+| [BASE]   | Unique ID of base in Airtable   | *'appxxxp0BT5w4x1ac'* |
+| [TABLE]  | Table name in Airtable          | *'phonebook'*         |
 
 ### List - airtab2php_list()
 
-This function lists records from Airtable based on base ID and table name. It's also possible to customize it by using the variables listed in the table below.
+This function lists records from Airtable based on base ID and table name. It's also possible to customize it by using the arguments listed in the table below.
 
 ```php
 airtab2php_select([APIKEY], [BASE], [TABLE], [VIEW], [FIELDS], [WHERE], [SORT], [LIMIT]);
@@ -32,9 +32,9 @@ airtab2php_select([APIKEY], [BASE], [TABLE], [VIEW], [FIELDS], [WHERE], [SORT], 
 
 The function will return the result as an array.
 
-#### Optional variables
+#### Optional arguments
 
-| Variable | Description                             | Example                                             |
+| Argument | Description                             | Example                                             |
 | -------- | --------------------------------------- | --------------------------------------------------- |
 | [VIEW]   | Custom Grid view                        | *'Grid view'* (default)                             |
 | [FIELDS] | Name of fields to include               | *'firstname;lastname;phonenumber'*                  |
@@ -44,7 +44,7 @@ The function will return the result as an array.
 
 ### Create - airtab2php_create()
 
-This function will create new record in Airtable based on base ID and table name. In addition, fields and values are also required variables to be able to perform this function correctly. The use of these variables are listed in the table below.
+This function will create new record in Airtable based on base ID and table name. In addition, fields and values are also required arguments to be able to perform this function correctly. The use of these arguments are listed in the table below.
 
 ```php
 airtab2php_insert([APIKEY], [BASE], [TABLE], [FIELDS], [VALUES]);
@@ -52,16 +52,16 @@ airtab2php_insert([APIKEY], [BASE], [TABLE], [FIELDS], [VALUES]);
 
 If the function is performed correctly, it will return `TRUE`.
 
-#### Required variables
+#### Required arguments
 
-| Variable | Description                       | Example                            |
+| Argument | Description                       | Example                            |
 | -------- | --------------------------------- | ---------------------------------- |
 | [FIELDS] | Specify name of fields in table   | *'firstname;lastname;phonenumber'* |
 | [VALUES] | Specify values to create in table | *'John;Doe;155588812'*             |
 
 ### Update - airtab2php_update()
 
-This function will update existing record in Airtable based on base ID and table name. In addition, record ID, fields and values are also required variables to be able to perform this function correctly. The use of these variables are listed in the table below.
+This function will update existing record in Airtable based on base ID and table name. In addition, record ID, fields and values are also required arguments to be able to perform this function correctly. The use of these arguments are listed in the table below.
 
 ```php
 airtab2php_update([APIKEY], [BASE], [TABLE], [ID], [FIELDS], [VALUES]);
@@ -69,9 +69,9 @@ airtab2php_update([APIKEY], [BASE], [TABLE], [ID], [FIELDS], [VALUES]);
 
 If the function is performed correctly, it will return `TRUE`.
 
-#### Required variables
+#### Required arguments
 
-| Variable | Description                       | Example                            |
+| Argument | Description                       | Example                            |
 | -------- | --------------------------------- | ---------------------------------- |
 | [ID]     | ID of record to update in table   | *'rectCv8ZQm6bypdz4'*              |
 | [FIELDS] | Specify name of fields in table   | *'firstname;lastname;phonenumber'* |
@@ -79,7 +79,7 @@ If the function is performed correctly, it will return `TRUE`.
 
 ### Delete - airtab2php_delete()
 
-This function will delete existing record in Airtable based on base ID and table name. In addition, record ID is also required variable to be able to perform this function correctly. The use of this variable is listed in the table below.
+This function will delete existing record in Airtable based on base ID and table name. In addition, record ID is also required argument to be able to perform this function correctly. The use of this argument is listed in the table below.
 
 ```PHP
 airtab2php_delete([APIKEY], [BASE], [TABLE], [ID]);
@@ -87,9 +87,9 @@ airtab2php_delete([APIKEY], [BASE], [TABLE], [ID]);
 
 If the function is performed correctly, it will return `TRUE`.
 
-#### Required variable
+#### Required argument
 
-| Variable | Description                     | Example               |
+| Argument | Description                     | Example               |
 | -------- | ------------------------------- | --------------------- |
 | [ID]     | ID of record to delete in table | *'rectCv8ZQm6bypdz4'* |
 
