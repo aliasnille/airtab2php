@@ -47,6 +47,8 @@ function airtab2php_list($apikey, $base, $table, $view, $fields, $where, $sort, 
 
     if ($httpCode == 200 && $result['records']) {
       return $result['records'];
+    } else {
+      return FALSE;
     }
   } else {
     return FALSE;
@@ -83,6 +85,8 @@ function airtab2php_create($apikey, $base, $table, $fields, $values) {
 
     if ($httpCode == 200 && !empty($result['id'])) {
       return TRUE;
+    } else {
+      return FALSE;
     }
   } else {
     return FALSE;
@@ -120,6 +124,8 @@ function airtab2php_update($apikey, $base, $table, $id, $fields, $values) {
 
     if ($httpCode == 200 && !empty($result['id'])) {
       return TRUE;
+    } else {
+      return FALSE;
     }
   } else {
     return FALSE;
@@ -151,6 +157,8 @@ function airtab2php_delete($apikey, $base, $table, $id) {
 
     if ($httpCode == 200 && $result['deleted']) {
       return TRUE;
+    } else {
+      return FALSE;
     }
   } else {
     return FALSE;

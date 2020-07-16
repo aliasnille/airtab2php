@@ -10,6 +10,10 @@ Easy to install, just include it.
 require_once 'airtab2php.php';
 ```
 
+## Requirements
+
+Apache, Lighttpd, Nginx or similar with PHP 5 or 7 and cURL.
+
 ## Usage
 
 API-key, base ID and table name are required arguments for all functions.
